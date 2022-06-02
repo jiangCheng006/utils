@@ -51,7 +51,7 @@ pinyin.getCamelChars('杭州市') // HZS
 
 validator.getRule('idcard', ({code, pattern, message, name}) => ({
   code,
-  rule,
+  rule: pattern,
   message,
   label: name
 }))
