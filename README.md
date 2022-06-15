@@ -13,7 +13,7 @@ npm --registry=http://101.68.79.42:4873/ install @lishi/utils --save
 ### 使用示例
 
 ```javascript
-import { pinyin } from '@lishi/utils'
+import { pinyin, validator } from '@lishi/utils'
 ```
 
 ### 接口文档
@@ -34,7 +34,7 @@ pinyin.getFullChars('杭州市') // HangZhouShi
 pinyin.getCamelChars('杭州市') // HZS
 ```
 
-2. 校验器
+2. validator校验器
 
 #### 内置的规则列表  
 
