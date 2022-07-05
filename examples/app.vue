@@ -4,7 +4,9 @@
 import { pinyin, validator} from '../src/index.js'
 
 function onGetPinyin() {
-  alert(pinyin.getFullChars('杭州市'))
+  alert(pinyin.getFullUppercase('杭州市',' '))
+  alert(pinyin.getFullLowercase('杭州市',' '))
+  alert(pinyin.getFullCamelCase('杭州市'))
 }
 
 function idCardRule() {
