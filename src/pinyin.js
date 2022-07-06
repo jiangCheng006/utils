@@ -30,7 +30,7 @@ const pinyin = (function () {
      * @param {*} separator 分隔符 默认为空
      * @returns 
      */
-     getFullUppercase: function (str,separator='') {
+     getFullUpperCase: function (str,separator='') {
       const tempArray= parseFullChar(str)
       const resultArray =tempArray.map(str=>{
         return capitalize(str)
@@ -43,7 +43,7 @@ const pinyin = (function () {
      * @param {*} separator 分隔符 默认为空
      * @returns 
      */
-    getFullLowercase:function(str,separator=''){
+    getFullLowerCase:function(str,separator=''){
       const resultArray= parseFullChar(str)
       return resultArray.join(separator)
     },
@@ -52,7 +52,7 @@ const pinyin = (function () {
      * @param {*} str 待转换的字符串
      * @param {*} separator 分隔符 默认为空
      */
-    getFullCamelCase(str,separator=''){
+     getFullCamelCase(str,separator=''){
       const tempArray=parseFullChar(str)
       const resultArray =tempArray.map((string,index)=>{
         return index===0?string:capitalize(string)
