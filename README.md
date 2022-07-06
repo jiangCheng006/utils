@@ -18,30 +18,34 @@ import { pinyin, validator } from '@lishi/utils'
 
 ### 接口文档
 
-1. pinyin 模块
+#### 1. pinyin 模块
 
-#### 方法
+##### 方法
 
 | 名称   |   参数   |  说明 |
 | -------- | :------: | :------ |
-| getFullChars | string | 输入中文字符串, 返回首字母大写的全拼 |
-| getCamelChars | string |  输入中文字符串, 返回大写的简拼  |
+| getFullUpperCase | source:string,separator:string | 输入中文字符串, 返回首字母大写的全拼，并根据分隔符拼接 |
+| getFullLowerCase | source:string,separator:string | 输入中文字符串, 返回全部小写的全拼，并根据分隔符拼接 |
+| getFullCamelCase | source:string,separator:string | 输入中文字符串, 返回驼峰形式的全拼，并根据分隔符拼接 |
+| getCamelChars | source:string |  输入中文字符串, 返回大写的简拼  |
 
-#### 示例
+##### 示例
 
 ```javascript
-pinyin.getFullChars('杭州市') // HangZhouShi
+pinyin.getFullChars('首字母大写',' ') //Shou Zi Mu Da Xie
+pinyin.getFullChars('全小写',' ') //quan xiao xie
+pinyin.getFullChars('驼峰输出') // tuoFengShuChu
 pinyin.getCamelChars('杭州市') // HZS
 ```
 
-2. validator校验器
+#### 2. validator校验器
 
-#### 内置的规则列表  
+##### 内置的规则列表  
 
 * idcard 身份证
 * mobile 手机号码
 
-#### 方法
+##### 方法
 
 | 名称   |   参数   |  说明 |
 | -------- | ------ | ------ |
