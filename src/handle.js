@@ -1,6 +1,6 @@
-import full_dict from './data/dict_full'
-import polyphone from './data/dict_polyphone'
-import char_dict from './data/dict_char'
+import fullDict from './data/dict-full'
+import polyphone from './data/dict-polyphone'
+import charDict from './data/dict-char'
  
  /**
 * 解析字符串获取拼音
@@ -33,8 +33,8 @@ export function parseFullChar(str){
  * @returns string | false
  */
 export function getFullChar(str) {
-    for (const key in full_dict) {
-      if (full_dict[key].indexOf(str) !== -1) {
+    for (const key in fullDict) {
+      if (fullDict[key].indexOf(str) !== -1) {
         return key;
         break
       }
@@ -64,9 +64,9 @@ export function getChar (ch,options) {
     } // dealWithOthers(ch);
     // 检查是否是多音字,是按多音字处理,不是就直接在strChineseFirstPY字符串中找对应的首字母
     if (!options.checkPolyphone) {
-      return char_dict.charAt(unicode - 19968)
+      return charDict.charAt(unicode - 19968)
     }
-    return polyphone[unicode] ? polyphone[unicode] : char_dict.charAt(unicode - 19968)
+    return polyphone[unicode] ? polyphone[unicode] : charDict.charAt(unicode - 19968)
 }
 
 
