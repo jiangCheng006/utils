@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import { pinyin, validator} from '../src/index.js'
-import {ref} from 'vue'
+import {reactive, ref} from 'vue'
 function onGetPinyin() {
   alert(pinyin.getFullUpperCase('杭州市',' '))
   alert(pinyin.getFullLowerCase('杭州市',' '))
@@ -29,15 +29,33 @@ let resultCamelCase=ref('--')
 function getFullCamelCase(){
   resultCamelCase.value=pinyin.getFullCamelCase(camelCase.value,separator3.value)
 }
-
+let ruleStr=reactive({
+  code:"",
+  pattern:'',
+  message:'',
+  name:''
+})
 function idCardRule() {
-  alert(JSON.stringify(validator.getRule('idcard', ({code, pattern, message, name}) => ({
-    code,
-    rule: pattern,
-    message,
-    label: name
-  }))))
+   validator.getRule('idCard', ({code, pattern, message, name}) => {
+    ruleStr.code=code
+    ruleStr.pattern=pattern
+    ruleStr.message=message
+    ruleStr.name=name
+  })
 }
+
+let phoneNumber=ref('')
+let XORResult=ref('')
+function XORHandle(){
+  validator.getValidatorXOR(['mobile','tel'])('',phoneNumber.value,(error)=>{
+    if(error){
+      console.log(error)
+      XORResult.value=error
+    }else{
+      XORResult.value='校验成功'
+    }
+  })
+} 
 
 </script>
 <template>
@@ -63,7 +81,14 @@ function idCardRule() {
       </button>（驼峰）：{{resultCamelCase}}</p>
   </div>
   
-  <div class="demo-item"><button v-on:click="idCardRule">获取身份证校验数据</button></div>
+  <div class="demo-item">
+    <button v-on:click="idCardRule">获取身份证校验数据</button>
+    <p>{{ruleStr}}</p>
+  </div>
+  <div class="demo-item">
+    <input v-model="phoneNumber">：<button v-on:click="XORHandle">校验手机或电话号码</button>
+    {{XORResult}}
+  </div>
 </template>
 
 <style>
@@ -84,7 +109,7 @@ function idCardRule() {
   font-weight: 600;
 }
 #app .demo-item {
-  text-align: left;
+  text-align: center;
   margin-bottom: 20px;
 }
 </style>
