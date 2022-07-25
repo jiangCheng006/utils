@@ -3,31 +3,50 @@ const rules = [
     code: 'idCard',
     pattern: /^(?:[1-9]\d{7}(?:0\d|10|11|12)(?:0[1-9]|[1-2][\d]|30|31)\d{3}|[1-9]\d{5}(?:18|19|20)\d{2}(?:0[1-9]|10|11|12)(?:0[1-9]|[1-2]\d|30|31)\d{3}[\dXx])$/,
     message: '身份证格式不正确',
-    name: '身份证号'
+    name: '身份证号',
+    export:['']
   },
   {
     code:'mobile',
     pattern:/^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/,
     message:'手机号格式不正确',
-    name:'手机号'
+    name:'手机号',
+    examples:['13488888888','14688888888']
   },
   {
     code:'tel',
     pattern:/^(\d{7,8}|\d{3,4}-\d{7,8})$/,
     message:'固定电话格式错误',
-    name:'固定电话'
+    name:'固定电话',
+    examples:['1234567','0577-1234567']
   },
   {
     code:'email',
-    pattern:/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/,
+    pattern:/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
     message:'邮箱格式不正确',
-    name:'邮箱'
+    name:'邮箱(支持中文邮箱)',
+    examples:['XXX@abc.com']
   },
   {
     code:'password',
     pattern:/(?!^\d+$)(?!^[A-Z]+$)(?!^[a-z]+$)(?!^_+$)^\w{6,20}$/,
     message:"6~20字，字母、数字、下划线，包含任意两种（区分大小写）",
-    name:'密码校验'
+    name:'密码校验',
+    examples:['Ls_123456']
+  },
+  {
+    code:'trainNumber',
+    pattern:/^[GCDZTSPKXLY1-9]\d{1,4}$/,
+    message:"车次编号不正确",
+    name:'车次编号',
+    examples: ['G888', 'D2345']
+  },
+  {
+    code:'postalCode',
+    pattern: /^(0[1-7]|1[0-356]|2[0-7]|3[0-6]|4[0-7]|5[1-7]|6[1-7]|7[0-5]|8[013-6])\d{4}$/,
+    message:'邮政编码格式不正确',
+    title: '邮政编码(中国)',
+    examples: ['734500', '100101']
   },
   {
     code:'require',
@@ -37,6 +56,12 @@ const rules = [
   }
 ]
  
+const needParameters=[
+  {
+
+  }
+]
+
 
 //用户认证密码，手机，邮箱
 
