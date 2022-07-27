@@ -42,14 +42,25 @@ pinyin.getCamelChars('杭州市') // HZS
 
 ##### 内置的规则列表  
 
-* idcard 身份证
+* idCard 身份证
 * mobile 手机号码
+* tel 固定电话
+* email 邮箱(支持中文邮箱)
+* password 密码校验
+* trainNumber 车次编号
+* postalCode 邮政编码(中国)
+* licensePlateGreen 车牌号(新能源)
+* licensePlateNoGreen 车牌号(非新能源)
+* licensePlate 车牌号
+* require 必填
+
 
 ##### 方法
 
 | 名称   |   参数   |  说明 |
 | -------- | ------ | ------ |
 | getRule | code, parse | 获取一个具体的校验格式信息, 返回解析后数据。 parse为解析器, 默认返回原数据结构 |
+| getValidatorXOR | codes | 获取一个具体的异或校验能力的函数：参考validator函数处理机制 |
 
 ```javascript
 
