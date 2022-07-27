@@ -1,9 +1,11 @@
 {
   "name": "@lishi/utils",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "scripts": {
     "start": "vite --config vite.dev.config.ts --open",
-    "build": "vue-tsc --noEmit && vite build --config vite.build.config.ts"
+    "build": "vue-tsc --noEmit && vite build --config vite.build.config.ts",
+    "demo": "vue-tsc --noEmit && vite build --config vite.demo.config.ts",
+    "build-all": "npm run build && npm run demo"
   },
   "dependencies": {
     "vue": "^3.2.25"
@@ -12,6 +14,7 @@
   "module": "lib/bundle.es.js",
   "files": [
     "lib",
+    "docs-dist",
     "README.md"
   ],
   "devDependencies": {
