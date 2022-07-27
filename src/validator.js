@@ -53,7 +53,29 @@ const rules = [
     required: true, 
     message: '必填项不能为空', 
     trigger: 'blur'
-  }
+  },
+  {
+    code:'licensePlateGreen',
+    title: '车牌号(新能源)',
+    pattern: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z](?:((\d{5}[A-HJK])|([A-HJK][A-HJ-NP-Z0-9][0-9]{4}))|[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳])$/,
+    message:'非新能源车牌号',
+    examples: ['京AD92035', '甘G23459F', '京AA92035']
+  },
+  {
+    code:'licensePlateNoGreen',
+    pattern: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z][A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]$/,
+    title: '车牌号(非新能源)',
+    message:'车牌号（非新能源）格式不对',
+    examples: ['京A00599', '黑D23908']
+  },
+  {
+    code:'licensePlate',
+    pattern: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z][A-HJ-NP-Z0-9]{4,5}[A-HJ-NP-Z0-9挂学警港澳]$/,
+    title: '车牌号(新能源+非新能源)',
+    message:'车牌号格式不对',
+    examples: ['京A12345D', '京A00599', '京AD92035', '甘G23459F', '京AA92035'],
+    counterExamples: ['宁AD1234555555', '浙苏H6F681']
+  },
 ]
  
 const needParameters=[
